@@ -1,12 +1,10 @@
 package com.example.noteapp
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -36,7 +34,15 @@ class NoteListActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(view: View) {
         if (view.tag != null) {
-            Log.i("No activity", "No activity")
+            showNoteDetails(view.tag as Int)
         }
+    }
+
+    fun showNoteDetails(noteIndex: Int) {
+        val note = notes[noteIndex]
+        val intent = Intent(this, NoteDetailsActivity::class.java)
+        intent.putExtra(NoteDetailsActivity.EXTRA_NOTE, note)
+        intent.putExtra(NoteDetailsActivity.EXTRA_NOTE_INDEX, noteIndex)
+        startActivity(intent)
     }
 }
