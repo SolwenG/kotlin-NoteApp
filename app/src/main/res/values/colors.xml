@@ -3,4 +3,6 @@
     <color name="black">#494949</color>
     <color name="white">#FFFFFFFF</color>
     <color name="grey">#677179</color>
+    <color name="duck">#4d7183</color>
+    <color name="accent">#d17e7f</color>
 </resources>
