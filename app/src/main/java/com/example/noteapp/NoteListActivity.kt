@@ -5,6 +5,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.os.Parcelable
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.annotation.RequiresApi
@@ -105,7 +106,7 @@ class NoteListActivity : AppCompatActivity(), View.OnClickListener {
     fun showNoteDetails(noteIndex: Int) {
         val note = if (noteIndex < 0) Note() else notes[noteIndex]
         val intent = Intent(this, NoteDetailsActivity::class.java)
-        intent.putExtra(NoteDetailsActivity.EXTRA_NOTE, note)
+        intent.putExtra(NoteDetailsActivity.EXTRA_NOTE, note as Parcelable)
         intent.putExtra(NoteDetailsActivity.EXTRA_NOTE_INDEX, noteIndex)
         startActivityForResult(intent, NoteDetailsActivity.REQUEST_EDIT_NOTE)
     }

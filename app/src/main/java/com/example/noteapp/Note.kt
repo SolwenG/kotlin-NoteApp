@@ -23,6 +23,8 @@ data class Note(var title: String? = "", var text: String? = "", var filename: S
     }
 
     companion object CREATOR : Parcelable.Creator<Note> {
+        private val serialVersionUid : Long = 11111111
+
         override fun createFromParcel(parcel: Parcel): Note {
             return Note(parcel)
         }
