@@ -18,4 +18,7 @@
         <item name="android:textStyle">italic</item>
         <item name="android:textColor">@color/grey</item>
     </style>
+    <style name="FabButtonShape">
+        <item name="cornerSize">50%</item>
+    </style>
 </resources>

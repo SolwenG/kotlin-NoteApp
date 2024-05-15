@@ -22,4 +22,18 @@
         android:layout_below="@+id/toolbar"
         tools:text="@layout/item_note" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/create_note_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="15dp"
+        android:contentDescription="add_button"
+        app:fabCustomSize="50dp"
+        app:backgroundTint="@color/accent"
+        style="@style/FabButtonShape"
+        android:src="@drawable/outline_add_24"
+        />
+
 </RelativeLayout>
