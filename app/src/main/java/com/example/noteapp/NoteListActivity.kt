@@ -55,12 +55,27 @@ class NoteListActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun processEditNoteResult(data: Intent) {
         val noteIndex = data.getIntExtra(NoteDetailsActivity.EXTRA_NOTE_INDEX, -1)
-        val note = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            data.getParcelableExtra(NoteDetailsActivity.EXTRA_NOTE, Note::class.java)!!
-        } else {
-            data.getParcelableExtra<Note>(NoteDetailsActivity.EXTRA_NOTE)!!
+        when(data.action) {
+            NoteDetailsActivity.ACTION_SAVE_NOTE -> {
+                val note = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    data.getParcelableExtra(NoteDetailsActivity.EXTRA_NOTE, Note::class.java)!!
+                } else {
+                    data.getParcelableExtra<Note>(NoteDetailsActivity.EXTRA_NOTE)!!
+                }
+                saveNote(note, noteIndex)
+            }
+            NoteDetailsActivity.ACTION_DELETE_NOTE -> {
+                deleteNote(noteIndex)
+            }
         }
-        saveNote(note, noteIndex)
+    }
+
+    private fun deleteNote(noteIndex: Int) {
+        if(noteIndex < 0) {
+            return
+        }
+        val note = notes.removeAt(noteIndex)
+        adapter.notifyDataSetChanged()
     }
 
     @SuppressLint("NotifyDataSetChanged")
