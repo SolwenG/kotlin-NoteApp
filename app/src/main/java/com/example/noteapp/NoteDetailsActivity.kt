@@ -38,6 +38,8 @@ class NoteDetailsActivity : AppCompatActivity() {
             intent.getParcelableExtra<Note>(EXTRA_NOTE)!!
         }
 
+        noteIndex = intent.getIntExtra(EXTRA_NOTE_INDEX, -1)
+
         titleView = findViewById(R.id.title)
         textView = findViewById(R.id.text)
 

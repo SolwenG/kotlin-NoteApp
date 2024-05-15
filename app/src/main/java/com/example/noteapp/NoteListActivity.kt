@@ -53,9 +53,9 @@ class NoteListActivity : AppCompatActivity(), View.OnClickListener {
     private fun processEditNoteResult(data: Intent) {
         val noteIndex = data.getIntExtra(NoteDetailsActivity.EXTRA_NOTE_INDEX, -1)
         val note = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            intent.getParcelableExtra(NoteDetailsActivity.EXTRA_NOTE, Note::class.java)!!
+            data.getParcelableExtra(NoteDetailsActivity.EXTRA_NOTE, Note::class.java)!!
         } else {
-            intent.getParcelableExtra<Note>(NoteDetailsActivity.EXTRA_NOTE)!!
+            data.getParcelableExtra<Note>(NoteDetailsActivity.EXTRA_NOTE)!!
         }
         saveNote(note, noteIndex)
     }
